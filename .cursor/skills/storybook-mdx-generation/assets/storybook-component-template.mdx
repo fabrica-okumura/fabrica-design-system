@@ -1,0 +1,28 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "./<component>.stories";
+
+<Meta of={Stories} />
+
+# コンポーネント名
+
+1〜2行の概要を書く。
+
+## Examples
+
+### Primary
+<Canvas of={Stories.Primary} />
+<Controls of={Stories.Primary} />
+
+### Variants
+<Canvas of={Stories.VariantA} />
+<Canvas of={Stories.VariantB} />
+
+## Design implementation
+
+### When to use?
+- 使うべき状況
+- 使わないほうが良い状況
+
+### How to use?
+- 使い方のポイント
+- 注意点

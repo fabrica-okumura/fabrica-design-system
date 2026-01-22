@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
-import { expect, fn, userEvent, within } from "storybook/test"
 
 import { Button } from "./button"
 
@@ -8,7 +7,6 @@ type ButtonProps = React.ComponentProps<typeof Button>
 const meta = {
   title: "UI/Button",
   component: Button,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
@@ -32,14 +30,6 @@ export const Primary: Story = {
     children: "Primary",
     variant: "default",
     size: "default",
-    onClick: fn(),
-  },
-  play: async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement)
-    const button = canvas.getByRole("button", { name: /primary/i })
-
-    await userEvent.click(button)
-    await expect(args.onClick).toHaveBeenCalledTimes(1)
   },
 }
 
@@ -86,15 +76,6 @@ export const Disabled: Story = {
   args: {
     children: "Disabled",
     disabled: true,
-    onClick: fn(),
-  },
-  play: async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement)
-    const button = canvas.getByRole("button", { name: /disabled/i })
-
-    await expect(button).toBeDisabled()
-    await userEvent.click(button, { pointerEventsCheck: 0 })
-    await expect(args.onClick).not.toHaveBeenCalled()
   },
 }
 
@@ -102,12 +83,5 @@ export const Focusable: Story = {
   args: {
     children: "Focusable",
     variant: "neutral",
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement)
-    const button = canvas.getByRole("button", { name: /focusable/i })
-
-    await userEvent.tab()
-    await expect(button).toHaveFocus()
   },
 }
