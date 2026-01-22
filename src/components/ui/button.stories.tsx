@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite"
 
 import { Button } from "./button"
+import { Icon as UiIcon } from "./icon"
 
 type ButtonProps = React.ComponentProps<typeof Button>
 
@@ -68,7 +69,7 @@ export const Icon: Story = {
   args: {
     "aria-label": "Search",
     size: "icon",
-    children: "🔍",
+    children: <UiIcon name="search" />,
   },
 }
 
