@@ -4,7 +4,7 @@ import * as React from "react"
 import * as SwitchPrimitive from "@radix-ui/react-switch"
 
 import { Label } from "./label"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 type SwitchProps = React.ComponentProps<typeof SwitchPrimitive.Root> & {
   label?: React.ReactNode

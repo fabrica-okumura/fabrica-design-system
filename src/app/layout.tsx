@@ -4,7 +4,7 @@ import './globals.css'
 
 import { PageHeader } from '@/components/shared/page-header'
 import { PageTopButton } from '@/components/shared/page-top-button'
-import { Toaster } from '@/components/ui/sonner'
+import { Toaster } from '../components/ui/sonner'
 
 export const metadata: Metadata = {
   title: 'サイトタイトル',

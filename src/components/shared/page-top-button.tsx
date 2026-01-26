@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Icon } from '@/components/ui/icon'
-import { cn } from '@/lib/utils'
+import { Icon } from '../ui/icon'
+import { cn } from '../../lib/utils'
 
 export function PageTopButton({ className }: { className?: string }) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {

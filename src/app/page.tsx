@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "../components/ui/accordion"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,9 +16,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { Badge } from "@/components/ui/badge"
+} from "../components/ui/alert-dialog"
+import { AspectRatio } from "../components/ui/aspect-ratio"
+import { Badge } from "../components/ui/badge"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -26,10 +26,10 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Button } from "@/components/ui/button"
-import { Heading } from "@/components/ui/heading"
-import { SectionContainer } from "@/components/ui/section-container"
+} from "../components/ui/breadcrumb"
+import { Button } from "../components/ui/button"
+import { Heading } from "../components/ui/heading"
+import { SectionContainer } from "../components/ui/section-container"
 import { Gap } from "@/components/shared/gap"
 import {
   Card,
@@ -38,15 +38,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "../components/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
-import { Checkbox } from "@/components/ui/checkbox"
+} from "../components/ui/carousel"
+import { Checkbox } from "../components/ui/checkbox"
 import {
   Dialog,
   DialogContent,
@@ -55,32 +55,32 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "../components/ui/dialog"
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldLabel,
-} from "@/components/ui/field"
-import { Icon } from "@/components/ui/icon"
+} from "../components/ui/field"
+import { Icon } from "../components/ui/icon"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/components/ui/input-group"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "../components/ui/input-group"
+import { Input } from "../components/ui/input"
+import { Label } from "../components/ui/label"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/components/ui/native-select"
+} from "../components/ui/native-select"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "../components/ui/select"
 import {
   Pagination,
   PaginationContent,
@@ -89,12 +89,12 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
-import { Skeleton } from "@/components/ui/skeleton"
-import { Switch } from "@/components/ui/switch"
+} from "../components/ui/pagination"
+import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group"
+import { ScrollArea } from "../components/ui/scroll-area"
+import { Separator } from "../components/ui/separator"
+import { Skeleton } from "../components/ui/skeleton"
+import { Switch } from "../components/ui/switch"
 import { toast } from "sonner"
 import {
   Table,
@@ -103,17 +103,17 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Text } from "@/components/ui/text"
-import { TextLink } from "@/components/ui/text-link"
-import { Textarea } from "@/components/ui/textarea"
-import { Toggle } from "@/components/ui/toggle"
+} from "../components/ui/table"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
+import { Text } from "../components/ui/text"
+import { TextLink } from "../components/ui/text-link"
+import { Textarea } from "../components/ui/textarea"
+import { Toggle } from "../components/ui/toggle"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "../components/ui/tooltip"
 
 const sections = [
   "Accordion",
