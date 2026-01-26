@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const OUTPUT = path.resolve(__dirname, '../src/app/variables.css') // 処理対象の CSS のパス
+const OUTPUT = path.resolve(__dirname, '../src/styles/variables.css') // 処理対象の CSS のパス
 
 function formatNumber(value) {
   const parsed = Number(value) // 数値に変換
