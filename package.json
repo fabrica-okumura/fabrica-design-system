@@ -1,8 +1,11 @@
 {
-  "name": "fabrica-design-system",
+  "name": "@fabrica/design-system",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
