@@ -2,6 +2,16 @@
 
 Fabricaの共通UIコンポーネントとデザイントークンを提供するリポジトリです。
 
+## MCPサーバー（ローカル）
+MCPサーバーは `mcp-server/` にあります。ローカルでの起動は以下の通りです。
+
+```bash
+cd mcp-server
+npm install
+npm run build
+npm run mcp
+```
+
 ## アイコン運用
 - 新しいSVGアイコンは `public/icons/` に配置してください。
 - 開発中は `npm run watch:icons` を常駐させることで、SVG追加・更新時に `src/components/ui/icon-definitions.ts` が自動更新されます。

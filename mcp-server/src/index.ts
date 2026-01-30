@@ -28,6 +28,7 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..', '..');
 
 const stylesDir = path.join(repoRoot, 'src', 'styles');
+const globalsPath = path.join(stylesDir, 'globals.css');
 const variablesPath = path.join(stylesDir, 'variables.css');
 
 const toKebabCase = (value: string) => {
@@ -132,16 +133,36 @@ server.registerResource(
   'design-tokens://tokens',
   {
     title: 'Design Tokens',
-    description: 'Design tokens parsed from src/styles/variables.css',
+    description: 'Design tokens parsed from src/styles/globals.css and variables.css',
     mimeType: 'application/json'
   },
   async () => {
-    const cssText = await readFile(variablesPath, 'utf8');
-    const tokens = parseCssVariables(cssText);
+    const readText = async (filePath: string) => {
+      try {
+        const text = await readFile(filePath, 'utf8');
+        return { text, error: null as string | null };
+      } catch (error) {
+        return {
+          text: '',
+          error: `Failed to read ${path.relative(repoRoot, filePath)}`
+        };
+      }
+    };
+
+    const globals = await readText(globalsPath);
+    const variables = await readText(variablesPath);
+
+    const tokens = [
+      ...parseCssVariables(globals.text),
+      ...parseCssVariables(variables.text)
+    ];
+
+    const errors = [globals.error, variables.error].filter(Boolean);
     const payload = {
-      source: 'src/styles/variables.css',
+      sources: ['src/styles/globals.css', 'src/styles/variables.css'],
       count: tokens.length,
-      tokens
+      tokens,
+      ...(errors.length > 0 ? { errors } : {})
     };
 
     return {
@@ -161,9 +182,9 @@ server.registerTool(
   {
     title: 'Get Component Context',
     description: 'Fetch implementation, story, and docs for a component.',
-    inputSchema: {
+    inputSchema: z.object({
       name: z.string().describe('Component name, e.g. button or date-picker')
-    }
+    })
   },
   async ({ name }) => {
     const context = await buildComponentContext(name);

@@ -5,7 +5,7 @@
 ### 1. インストール
 
 ```bash
-npm install fabrica-design-system
+npm install @fabrica/design-system
 ```
 
 ### 2. CSS読み込み
@@ -13,13 +13,13 @@ npm install fabrica-design-system
 `src/app/globals.css` などで CSS を読み込みます。
 
 ```css
-@import "fabrica-design-system/styles.css";
+@import "@fabrica/design-system/styles.css";
 ```
 
 ### 3. 利用例
 
 ```tsx
-import { Button } from "fabrica-design-system";
+import { Button } from "@fabrica/design-system";
 
 export default function Example() {
   return <Button>保存</Button>;
@@ -49,6 +49,22 @@ export default function Example() {
 - `npm run storybook`: Storybook を起動（ポート 6006）
 - `npm run watch:icons`: `public/icons/*.svg` の変更を監視して `icon-definitions.ts` を再生成
 - `npm run generate:icons`: アイコン定義の手動再生成
+
+## MCPサーバー（ローカル）
+
+MCPサーバーは `mcp-server/` にあり、標準入出力（stdio）で起動します。
+
+```bash
+cd mcp-server
+npm install
+npm run build
+npm run mcp
+```
+
+## デプロイ（Vercel）
+
+docs は `https://fabrica-design-system.vercel.app/` にデプロイ済みです。  
+GitHub に push すると自動デプロイされます。
 
 ## アイコン運用
 
