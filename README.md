@@ -2,6 +2,31 @@
 
 Fabricaの共通UIコンポーネントとデザイントークンを提供するリポジトリです。
 
+## 利用対象
+- **デザインシステム担当**: 本リポジトリを更新・配布します。
+- **通常の開発者**: `fabrica-product-starter` を利用し、基本的に本リポジトリは触りません。
+
+## 必要バージョン
+- Node.js v22 以上
+- npm（pnpm / Yarn は使用しません）
+
+## 初期セットアップ
+```bash
+npm install
+npm run dev
+```
+
+## よく使うスクリプト
+- `npm run dev`: Next.js 開発サーバーを起動
+- `npm run build`: 本番ビルドを作成
+- `npm run lint`: Lint チェック
+- `npm run storybook`: Storybook を起動（ポート 6006）
+- `npm run watch:icons`: `public/icons/*.svg` の変更を監視して `icon-definitions.ts` を再生成
+- `npm run generate:icons`: アイコン定義の手動再生成
+
+## 公開と利用（npmjs）
+本体は `npm publish` で公開し、スターター側は `@fabrica/design-system` をインストールします。
+
 ## MCPサーバー（ローカル）
 MCPサーバーは `mcp-server/` にあります。ローカルでの起動は以下の通りです。
 
