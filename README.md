@@ -25,7 +25,7 @@ npm run dev
 - `npm run generate:icons`: アイコン定義の手動再生成
 
 ## 公開と利用（npmjs）
-本体は `npm publish` で公開し、スターター側は `@fabrica/design-system` をインストールします。
+本体は `npm publish` で公開し、スターター側は `@fabrica_communications/design-system` をインストールします。
 
 ## MCPサーバー（ローカル）
 MCPサーバーは `mcp-server/` にあります。ローカルでの起動は以下の通りです。
