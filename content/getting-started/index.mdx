@@ -2,24 +2,26 @@
 
 ## 導入手順
 
-### 1. インストール
+### 1. 同期
+
+スターター（`fabrica-product-starter`）で A→B 同期を実行します。
 
 ```bash
-npm install @fabrica_communications/design-system
+npm run sync:ds
 ```
 
 ### 2. CSS読み込み
 
-`src/app/globals.css` などで CSS を読み込みます。
+スターターの `src/app/globals.css` でローカルCSSを読み込みます。
 
 ```css
-@import "@fabrica_communications/design-system/styles.css";
+@import "../styles/globals.css";
 ```
 
 ### 3. 利用例
 
 ```tsx
-import { Button } from "@fabrica_communications/design-system";
+import { Button } from "@/components/ui/button";
 
 export default function Example() {
   return <Button>保存</Button>;
@@ -28,7 +30,7 @@ export default function Example() {
 
 ## 依存関係
 
-- `peerDependencies` の `react` / `react-dom` / `next` はスターター側で合わせる必要があります。
+依存関係はスターター側で管理します。
 
 ## 必要バージョン
 

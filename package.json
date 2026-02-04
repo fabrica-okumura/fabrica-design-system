@@ -1,11 +1,8 @@
 {
   "name": "@fabrica_communications/design-system",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,22 +13,10 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
   "imports": {
     "@/lib/*": "./src/lib/*.ts",
     "@/components/*": "./src/components/*"
   },
-  "exports": {
-    ".": "./src/index.ts",
-    "./styles.css": "./src/styles/globals.css"
-  },
-  "files": [
-    "src",
-    "tokens",
-    "README.md",
-    "LICENSE"
-  ],
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
