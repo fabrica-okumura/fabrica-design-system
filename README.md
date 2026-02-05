@@ -1,18 +1,39 @@
 # Fabrica Design System
 
-Fabricaの共通UIコンポーネントとデザイントークンを提供するリポジトリです。
+Fabricaの共通UIコンポーネントとデザイントークンを提供するリポジトリです。デザインシステムのWebサイト（[https://fabrica-design-system.vercel.app/](https://fabrica-design-system.vercel.app/)）も公開しています。
+
+## 用語（前提）
+
+本ドキュメントでは **Aリポ＝fabrica-design-system**（本リポ）、**Bリポ＝fabrica-product-starter**（スターター）とします。以下、Aリポ・Bリポで表記します。
+
+## 2リポジトリ構成と作業の前提
+
+- **Aリポ:** 本体 + docs。UIコンポーネント/トークンとデザインシステムサイトを同居運用します。
+- **Bリポ:** 新規プロダクト用テンプレート。Aリポの実体を同期で取り込みます。
+- **作業の前提:** Aリポと Bリポは **同階層にクローン（ダウンロード）して作業する** ことを想定しています。例: 親フォルダの下に `fabrica-design-system` と `fabrica-product-starter` を並べ、同期や MCP の相対パス（`../fabrica-design-system`）がそのまま使えるようにします。
+
+## 技術スタック
+
+- **Framework:** Next.js v16 (App Router)
+- **UI Library:** shadcn/ui v3
+- **Styling:** Tailwind CSS v4（CSS変数と `@theme`、`tailwind.config.ts` は廃止方針）
+- **Catalog:** Storybook（Aリポが主、Bリポは必要に応じて利用）
+- **Documentation:** MDX（コンポーネント仕様・ガイドライン）
+- **AI:** MCP (Model Context Protocol)、Agent Skills（`SKILL.md` 形式）
+- **Design Tool:** Figma (Dev Mode & Variables)
+- **Runtime:** Node.js v22 以上
 
 ## 利用対象
-- **デザインシステム担当**: 本リポジトリを更新し、A→B 同期でスターターに配布します（npm 公開は行いません）。
-- **通常の開発者**: `fabrica-product-starter` を利用し、基本的に本リポジトリは触りません。
+- **デザインシステム担当**: Aリポを更新し、A→B 同期で Bリポに配布します。
+- **通常の開発者**: Bリポを利用し、基本的に Aリポは触りません。
 
 ## 必要バージョン
 - Node.js v22 以上
 - npm（pnpm / Yarn は使用しません）
 
 ## まずは何をすればいい？
-このリポジトリは **デザインシステム担当のみ** が更新・修正します。  
-通常の開発者は **スターターリポジトリ** から作業を開始してください。
+Aリポは **デザインシステム担当のみ** が更新・修正します。  
+通常の開発者は **Bリポ** から作業を開始してください。
 
 ## 初期セットアップ
 ```bash
@@ -25,6 +46,61 @@ npm run dev
 - `npm run storybook`: Storybook を起動
 - `npm run watch:icons`: `public/icons/*.svg` の変更を監視して `icon-definitions.ts` を再生成
 - `npm run generate:icons`: アイコン定義の手動再生成
+
+## リポジトリ構成（Aリポ）
+
+```
+.
+├── .cursor/skills/        # Agent Skills（Cursor用・正本）
+├── .claude/              # Agent Skills（Claude Desktop用・互換）
+├── .storybook/
+├── mcp-server/           # MCPサーバー（tools / resources）
+├── src/
+│   ├── components/ui/    # Primitives（再利用資産）
+│   ├── components/[name]/  # Chunks
+│   ├── components/shared/ # 共有コンポ（再利用資産）
+│   ├── components/docs/  # docsサイト専用UI
+│   ├── lib/              # ユーティリティ（再利用資産）
+│   ├── styles/           # CSS正本（再利用資産）
+│   ├── tokens/           # トークン（再利用資産）
+│   └── app/              # docsサイト専用（App Router）
+├── content/              # docs用MDX記事
+├── public/               # docs用（画像/OGP/アイコン）
+├── tokens/               # デザイントークンソース（ビルド入力）
+└── scripts/
+```
+
+## ディレクトリ責務（本体とdocsの分離）
+
+- **再利用資産（プロダクト側でも使う）**
+  - `src/components/ui`（Primitives）
+  - `src/components/shared`（共有コンポ）
+  - `src/styles`（CSS正本）
+  - `src/tokens`（トークン）
+  - `src/lib`（ユーティリティ）
+- **docsサイト専用**
+  - `src/app/**`（Next App Router のページ）
+  - `src/components/docs/**`（docs専用UI）
+  - docs専用のCSS（レイアウト・サイドバー・MDX表示・コードブロック用など。`src/app/` や `src/components/docs/` 内に配置。正本の `src/styles` は共有用なので配置しない）
+  - `content/**`（各ページのMDX記事）
+  - `public/**`（サイト画像/OGP/アイコンなど）
+- **MDX:** コンポーネント仕様（`src/components/ui/*.mdx`）および docs 記事（`content/**`）は、必要な場合のみ配置します。
+- Bリポへの同期対象は **再利用資産のみ** です。
+
+## docsサイト・Storybook
+
+- **Storybook:** UIの実装検証・インタラクション確認が主です。Aリポが主、Bリポは B専用コンポの Docs 表示で必要に応じて利用します。
+- **docs:** 使い方・原則・ガイドラインの体系化です。トップ（`/`）、Getting Started（`/getting-started`）、Foundations（`/foundations`）、Components（`/components/[slug]`）を想定しています。
+
+## 配布方針
+
+- **配布方式:** A→B 同期で配布します。
+- **CSSの正本:** Aリポの `src/styles/globals.css` です。docs は Aリポ内で参照し、Bリポは `src/styles/**` を同期して利用します。
+
+## Agent Skills
+
+- **Cursor:** `.cursor/skills/` を正本とします。
+- **Claude Desktop:** `.cursor/skills/` の内容を `.claude/skills/` にシンボリックリンクまたはコピーで対応します。
 
 ## MCP（Model Context Protocol）
 
@@ -40,8 +116,8 @@ Cursor などの MCP 対応ツールから接続すると、AI がコンポー�
 
 ### 誰がどこで使うと便利？
 
-- **デザインシステム担当（本リポジトリで作業する人）**: 接続しておくと、コンポーネント更新時に AI が一括で実装・ストーリー・ドキュメントを参照しやすくなります。
-- **通常の開発者（スターターなど別リポジトリで作業する人）**: 本リポジトリのソースが手元にないため、MCP で接続しておくと「Button の variant 一覧」「トークンの値」などを AI が参照でき、正しい使い方を聞きやすくなります。
+- **デザインシステム担当（Aリポで作業する人）**: 接続しておくと、コンポーネント更新時に AI が一括で実装・ストーリー・ドキュメントを参照しやすくなります。
+- **通常の開発者（Bリポなど別リポで作業する人）**: Aリポのソースが手元にないため、MCP で接続しておくと「Button の variant 一覧」「トークンの値」などを AI が参照でき、正しい使い方を聞きやすくなります。
 
 ---
 
@@ -57,17 +133,17 @@ npm install
 npm run build
 ```
 
-#### 2. 本リポジトリ（デザインシステム）を Cursor で開いている場合
+#### 2. Aリポを Cursor で開いている場合
 
-このリポジトリにはすでに `.cursor/mcp.json` が含まれており、**このリポジトリをルートにして Cursor で開いていれば**、MCP は自動で利用可能です。
+Aリポにはすでに `.cursor/mcp.json` が含まれており、**Aリポをルートにして Cursor で開いていれば**、MCP は自動で利用可能です。
 
 - 初回は上記のビルドを実行してください。
 - Cursor を開き直すか、MCP の再接続が行われれば「fabrica-design-system」サーバーが一覧に表示されます。
-- 表示されない・エラーになる場合は、Cursor の MCP ログ（出力パネルなど）で「Missing script: mcp」が出ていないか確認し、本リポジトリのルートで `npm run mcp` が実行できる状態か確認してください。
+- 表示されない・エラーになる場合は、Cursor の MCP ログ（出力パネルなど）で「Missing script: mcp」が出ていないか確認し、Aリポのルートで `npm run mcp` が実行できる状態か確認してください。
 
 #### 3. 利用側アプリ（別リポジトリ）で使う場合
 
-デザインシステムのソースが含まれていない **別のプロジェクト（スターターなど）** で、同じ MCP を使いたい場合の例です。
+Aリポのソースが含まれていない **Bリポなど別のプロジェクト** で、同じ MCP を使いたい場合の例です。
 
 1. そのプロジェクトのルートに `.cursor/mcp.json` を作成（既にある場合は `mcpServers` に追記）します。
 2. デザインシステムのリポジトリへの **相対パス** または **絶対パス** で、MCP を起動するように書きます。
@@ -111,6 +187,14 @@ npm run build
   → 利用側アプリで MCP に接続していれば、AI が Switch の実装・props を参照してコードを提案しやすくなります。
 
 設定が分からない場合は、デザインシステム担当に依頼してください。通常の開発者は、**デザインシステム Web サイト**（`https://fabrica-design-system.vercel.app/`）の参照だけでも問題ありません。
+
+### MCP運用ルール
+
+1. **正本は本体リポジトリ:** MCPの実装・定義は `mcp-server/` のみで管理します。
+2. **同期タイミング:** トークン/CSS更新後は `design-tokens` リソースを再生成し、同一コミットに含めます。
+3. **破壊的変更:** Tool/Resource の入出力スキーマ変更時はセマンティックバージョンを更新し、変更理由を記録します。
+4. **外部参照の安定性:** `get_component_context` の返却は実装・ストーリー・MDX の3点セットを欠かしません。
+5. **環境依存の排除:** MCPは Bリポに依存せず、Aリポのみで完結します。
 
 ## アイコン運用
 - アイコンSVGファイルは `public/icons/` に配置してください。
