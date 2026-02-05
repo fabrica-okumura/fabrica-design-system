@@ -1,23 +1,17 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { Noto_Sans_JP } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notoSansJP } from "@/lib/fonts";
+import "./globals.css";
 
-import { PageHeader } from '@/components/shared/page-header'
-import { PageTopButton } from '@/components/shared/page-top-button'
-import { Toaster } from '../components/ui/sonner'
+import { PageHeader } from "@/components/shared/page-header";
+import { PageTopButton } from "@/components/shared/page-top-button";
+import { Toaster } from "@/components/ui/sonner";
 
+/** A リポ専用: docs サイトのルートレイアウト（サイドナビ・ヘッダー付き）。配布用は layout.sync-template.tsx */
 export const metadata: Metadata = {
-  title: 'サイトタイトル',
-  description: '説明文です。',
-}
-
-const notoSansJP = Noto_Sans_JP({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  display: 'swap',
-  variable: '--font-sans',
-})
+  title: "サイトタイトル",
+  description: "説明文です。",
+};
 
 export default function RootLayout({
   children,

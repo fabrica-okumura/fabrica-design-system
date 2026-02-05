@@ -1,5 +1,9 @@
 {
   "mcpServers": {
+    "fabrica-design-system": {
+      "command": "npm",
+      "args": ["run", "mcp"]
+    },
     "shadcn": {
       "command": "npx",
       "args": [

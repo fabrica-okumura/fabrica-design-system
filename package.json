@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "mcp": "npm run mcp --prefix mcp-server",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
