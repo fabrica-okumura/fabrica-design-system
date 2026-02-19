@@ -56,10 +56,10 @@ npm run dev
 ├── .storybook/
 ├── mcp-server/           # MCPサーバー（tools / resources）
 ├── src/
-│   ├── components/ui/    # Primitives（再利用資産）
-│   ├── components/[name]/  # Chunks
-│   ├── components/shared/ # 共有コンポ（再利用資産）
-│   ├── components/docs/  # docsサイト専用UI
+│   ├── components/ui/       # Primitives（再利用資産・Bへ同期）
+│   ├── components/[name]/   # Chunks（複合コンポ・将来用）
+│   ├── components/layout/   # レイアウトコンポ（再利用資産・Bへ同期）
+│   ├── components/docs-site/ # docsサイト専用UI（Aのみ・同期しない）
 │   ├── lib/              # ユーティリティ（再利用資産）
 │   ├── styles/           # CSS正本（再利用資産）
 │   ├── tokens/           # トークン（再利用資産）
@@ -74,18 +74,25 @@ npm run dev
 
 - **再利用資産（プロダクト側でも使う）**
   - `src/components/ui`（Primitives）
-  - `src/components/shared`（共有コンポ）
+  - `src/components/layout`（レイアウトコンポ）
   - `src/styles`（CSS正本）
   - `src/tokens`（トークン）
   - `src/lib`（ユーティリティ）
 - **docsサイト専用**
   - `src/app/**`（Next App Router のページ）
-  - `src/components/docs/**`（docs専用UI）
-  - docs専用のCSS（レイアウト・サイドバー・MDX表示・コードブロック用など。`src/app/` や `src/components/docs/` 内に配置。正本の `src/styles` は共有用なので配置しない）
+  - `src/components/docs-site/**`（docsサイト専用UI。Aリポのみ。Bへは同期しない）
+  - docs専用のCSS（レイアウト・サイドバー・MDX表示・コードブロック用など。`src/app/` や `src/components/docs-site/` 内に配置。正本の `src/styles` は共有用なので配置しません）
   - `content/**`（各ページのMDX記事）
   - `public/**`（サイト画像/OGP/アイコンなど）
 - **MDX:** コンポーネント仕様（`src/components/ui/*.mdx`）および docs 記事（`content/**`）は、必要な場合のみ配置します。
-- Bリポへの同期対象は **再利用資産のみ** です。
+- Bリポへの同期対象は **再利用資産のみ** です。`src/components` 配下では **ui・layout・Chunks（[name]）** を同期し、**docs-site** のみ同期しません。
+- **同期対象のファイル・ディレクトリ構成は A と B で揃えておく必要があります。** 正本は A にあり、B は同期で上書きするため、同期対象ファイルは B 側で直接編集せず、A を更新してから `npm run sync:ds` で反映します。
+
+### docs 用 MDX スタイル方針（Aリポ専用）
+
+- **見た目の調整（タイポグラフィ、余白、色など）** は `prose` を使い、`src/app/globals.css` で上書きします。
+- **要素の意味や構造を変える調整（例: `h2` を独自 `Heading` に置換）** が必要になった場合のみ `mdx-components.tsx` を導入します。
+- Aリポ専用の MDX スタイル設定は `src/app/**` または `src/components/docs-site/**` に置きます。`src/styles/**` には置きません（Bリポ同期対象のため）。
 
 ## docsサイト・Storybook
 
@@ -97,10 +104,21 @@ npm run dev
 - **配布方式:** A→B 同期で配布します。
 - **CSSの正本:** Aリポの `src/styles/globals.css` です。docs は Aリポ内で参照し、Bリポは `src/styles/**` を同期して利用します。
 
-## Agent Skills
+## ルールの責務分離（人向け / AI向け）
+
+- **人が守ること（README）:** 目的、責務、同期対象、作業フローなどの運用ルールは README に記載します。
+- **AIが守ること（Skills）:** 編集判断、手順、禁止事項、確認手順は `.cursor/skills/**/SKILL.md` に記載します。
+- 同じ内容を二重管理しないため、README は「方針」、Skills は「実行ルール」に限定します。
+
+## Agent Skills（AI向け運用ルール）
 
 - **Cursor:** `.cursor/skills/` を正本とします。
 - **Claude Desktop:** `.cursor/skills/` の内容を `.claude/skills/` にシンボリックリンクまたはコピーで対応します。
+- 主な Skill:
+  - `skill-authoring-governance`: Skill作成時にREADME（人向け）とSkills（AI向け）の責務を分離するための基準。
+  - `boundary-rules`: 再利用資産とA専用docs資産の配置境界・同期境界を判断するルール。
+  - `mdx-docs-authoring`: AリポのMDXページ作成と `prose` / `mdx-components` の使い分けルール。
+  - `release-sync-playbook`: Aリポ更新をBリポ同期へ受け渡す際の確認手順とチェックリスト。
 
 ## MCP（Model Context Protocol）
 

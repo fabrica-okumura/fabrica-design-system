@@ -17,6 +17,8 @@ description: コンポーネント本体の更新に合わせてStorybookのス�
 - **1 Canvas = 1 Story**（複数Storyを1つのCanvasにまとめない）。
 - **ControlsはPrimaryのみ**表示する。
 - テスト用の依存（vitest/playwright/chromatic）は追加しない。
+- このSkillで同期するMDXは **`src/components/ui/*.mdx`（Storybook専用）**。
+- **`content/components/*.mdx`（Webページ用）** は対象外とし、必要なら `mdx-docs-authoring` で更新する。
 
 ## 更新手順
 1. 変更対象のコンポーネントファイルと既存の `<component>.stories.tsx` / `<component>.mdx` を読み取る。

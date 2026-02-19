@@ -30,7 +30,7 @@ import {
 import { Button } from "../components/ui/button"
 import { Heading } from "../components/ui/heading"
 import { SectionContainer } from "../components/ui/section-container"
-import { Gap } from "@/components/shared/gap"
+import { Gap } from "@/components/layout/gap"
 import {
   Card,
   CardContent,

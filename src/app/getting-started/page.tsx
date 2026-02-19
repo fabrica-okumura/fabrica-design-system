@@ -1,11 +1,12 @@
 "use client";
 
 import GettingStarted from "../../../content/getting-started/index.mdx";
+import { MdxArticle } from "@/components/docs-site/mdx-article";
 
 export default function GettingStartedPage() {
   return (
-    <article className="space-y-8 p-6">
+    <MdxArticle>
       <GettingStarted />
-    </article>
+    </MdxArticle>
   );
 }

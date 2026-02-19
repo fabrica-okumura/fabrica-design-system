@@ -1,11 +1,12 @@
 "use client";
 
 import Typography from "../../../../content/foundations/typography.mdx";
+import { MdxArticle } from "@/components/docs-site/mdx-article";
 
 export default function TypographyPage() {
   return (
-    <article className="space-y-8 p-6">
+    <MdxArticle>
       <Typography />
-    </article>
+    </MdxArticle>
   );
 }

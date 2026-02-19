@@ -1,12 +1,12 @@
 "use client";
 
-import Foundations from "../../../content/foundations/index.mdx";
+import Principles from "../../../content/principles/index.mdx";
 import { MdxArticle } from "@/components/docs-site/mdx-article";
 
-export default function FoundationsPage() {
+export default function PrinciplesPage() {
   return (
     <MdxArticle>
-      <Foundations />
+      <Principles />
     </MdxArticle>
   );
 }

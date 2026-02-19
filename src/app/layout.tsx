@@ -2,15 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notoSansJP } from "@/lib/fonts";
 import "./globals.css";
-
-import { PageHeader } from "@/components/shared/page-header";
-import { PageTopButton } from "@/components/shared/page-top-button";
 import { Toaster } from "@/components/ui/sonner";
 
 /** A リポ専用: docs サイトのルートレイアウト（サイドナビ・ヘッダー付き）。配布用は layout.sync-template.tsx */
 export const metadata: Metadata = {
-  title: "サイトタイトル",
-  description: "説明文です。",
+  title: "デザインシステム",
+  description: "このサイトの説明文です。",
 };
 
 export default function RootLayout({
@@ -19,6 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   const navItems = [
+    { href: '/principles', label: 'Principles' },
     { href: '/getting-started', label: 'Getting Started' },
     { href: '/foundations', label: 'Foundations' },
     { href: '/components', label: 'Components' },
@@ -27,12 +25,14 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`font-sans ${notoSansJP.variable}`}>
-        <PageHeader />
         <div className="flex min-h-screen bg-(--usage-background)">
-          <aside className="w-64 shrink-0 border-r border-(--usage-border) bg-white px-4 py-6">
-            <div className="mb-4 text-xs font-semibold uppercase tracking-wide text-(--primitive-neutral-600)">
-              Docs
-            </div>
+          <aside className="w-[200] shrink-0 border-r border-(--usage-border) bg-white px-4 py-6">
+            <Link
+              href="/"
+              className="mb-4 block text-xl font-semibold tracking-wide hover:underline"
+            >
+              デザインシステム
+            </Link>
             <nav className="space-y-2">
               {navItems.map((item) => (
                 <Link
@@ -47,7 +47,6 @@ export default function RootLayout({
           </aside>
           <div className="flex-1">{children}</div>
         </div>
-        <PageTopButton />
         <Toaster />
       </body>
     </html>
