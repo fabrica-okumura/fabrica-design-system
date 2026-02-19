@@ -24,7 +24,7 @@ Fabricaの共通UIコンポーネントとデザイントークンを提供す�
 - **Runtime:** Node.js v22 以上
 
 ## 利用対象
-- **デザインシステム担当**: Aリポを更新し、A→B 同期で Bリポに配布します。
+- **デザインシステム担当**: Aリポを更新し、Aリポ→Bリポ同期で Bリポに配布します。
 - **通常の開発者**: Bリポを利用し、基本的に Aリポは触りません。
 
 ## 必要バージョン
@@ -52,7 +52,6 @@ npm run dev
 ```
 .
 ├── .cursor/skills/        # Agent Skills（Cursor用・正本）
-├── .claude/              # Agent Skills（Claude Desktop用・互換）
 ├── .storybook/
 ├── mcp-server/           # MCPサーバー（tools / resources）
 ├── src/
@@ -86,7 +85,7 @@ npm run dev
   - `public/**`（サイト画像/OGP/アイコンなど）
 - **MDX:** コンポーネント仕様（`src/components/ui/*.mdx`）および docs 記事（`content/**`）は、必要な場合のみ配置します。
 - Bリポへの同期対象は **再利用資産のみ** です。`src/components` 配下では **ui・layout・Chunks（[name]）** を同期し、**docs-site** のみ同期しません。
-- **同期対象のファイル・ディレクトリ構成は A と B で揃えておく必要があります。** 正本は A にあり、B は同期で上書きするため、同期対象ファイルは B 側で直接編集せず、A を更新してから `npm run sync:ds` で反映します。
+- **同期対象のファイル・ディレクトリ構成は Aリポ と Bリポ で揃えておく必要があります。** 正本は Aリポ にあり、Bリポ は同期で上書きするため、同期対象ファイルは Bリポ 側で直接編集せず、Aリポ を更新してから `npm run sync:ds` で反映します。
 
 ### docs 用 MDX スタイル方針（Aリポ専用）
 
@@ -101,7 +100,7 @@ npm run dev
 
 ## 配布方針
 
-- **配布方式:** A→B 同期で配布します。
+- **配布方式:** Aリポ→Bリポ同期で配布します。
 - **CSSの正本:** Aリポの `src/styles/globals.css` です。docs は Aリポ内で参照し、Bリポは `src/styles/**` を同期して利用します。
 
 ## ルールの責務分離（人向け / AI向け）
