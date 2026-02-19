@@ -12,10 +12,8 @@ description: AリポのdocsサイトMDX作成とスタイリングを案内す�
 
 ## 手順
 1. ルートは `src/app/**/page.tsx`、本文は `content/**` に置く。
-2. `content/components/*.mdx` は「Webページ向けの人向け情報」を書く。
-   - 概要、使い方、注意点を記載する。
-   - Storybook詳細への導線リンクを含める。
-3. `src/components/ui/*.mdx` は Storybook 専用として扱う（Doc Blocks/Canvas/Controls 用）。
+2. `src/components/ui/*.mdx` は Storybook 専用として扱う（Doc Blocks/Canvas/Controls 用）。
+3. `/components` は一覧・導線ページとし、コンポーネント詳細は Storybook を正本とする。
 4. 記事ラッパーのクラス直書きは避け、`src/components/docs-site/*` のラッパーを使う。
 5. 見た目調整は `prose` を基本とし、A専用上書きは `src/app/globals.css` に置く。
 6. 構造置換が必要な場合のみ `mdx-components.tsx` を導入する（例: `h2` を独自コンポーネントに置換）。
@@ -23,4 +21,4 @@ description: AリポのdocsサイトMDX作成とスタイリングを案内す�
 ## ガードレール
 - docs専用スタイルを `src/styles/**` に入れない。
 - 可読性を優先し、小さく明示的な上書きに留める。
-- `content/components/*.mdx` を Storybook Doc Blocks 前提の記法にしない。
+- コンポーネント詳細のWeb用MDXページを新規作成しない（詳細は Storybook に集約）。

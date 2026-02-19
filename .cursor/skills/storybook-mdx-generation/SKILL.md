@@ -18,7 +18,7 @@ description: ReactコンポーネントからStorybook用のCSFストーリー�
 - **ControlsはPrimaryのみ**表示する。
 - テスト用の依存（vitest/playwright/chromatic）は追加しない。
 - このSkillで扱うMDXは **`src/components/ui/*.mdx`（Storybook専用）** のみ。
-- **`content/components/*.mdx`（Webページ用）** は別責務のため、ここでは新規作成・更新しない。
+- コンポーネント詳細は Storybook を正本とするため、Web用のコンポーネント詳細MDXは新規作成しない。
 
 ## 生成手順
 1. 対象のコンポーネントファイルを確認し、**コンポーネント名**と**配置ディレクトリ**を特定する。

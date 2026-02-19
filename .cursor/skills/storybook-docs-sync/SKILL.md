@@ -18,7 +18,7 @@ description: コンポーネント本体の更新に合わせてStorybookのス�
 - **ControlsはPrimaryのみ**表示する。
 - テスト用の依存（vitest/playwright/chromatic）は追加しない。
 - このSkillで同期するMDXは **`src/components/ui/*.mdx`（Storybook専用）**。
-- **`content/components/*.mdx`（Webページ用）** は対象外とし、必要なら `mdx-docs-authoring` で更新する。
+- コンポーネント詳細は Storybook を正本とし、Web用のコンポーネント詳細MDXは更新対象にしない。
 
 ## 更新手順
 1. 変更対象のコンポーネントファイルと既存の `<component>.stories.tsx` / `<component>.mdx` を読み取る。

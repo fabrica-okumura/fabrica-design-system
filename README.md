@@ -96,7 +96,7 @@ npm run dev
 ## docsサイト・Storybook
 
 - **Storybook:** UIの実装検証・インタラクション確認が主です。Aリポが主、Bリポは B専用コンポの Docs 表示で必要に応じて利用します。
-- **docs:** 使い方・原則・ガイドラインの体系化です。トップ（`/`）、Getting Started（`/getting-started`）、Foundations（`/foundations`）、Components（`/components/[slug]`）を想定しています。
+- **docs:** 使い方・原則・ガイドラインの体系化です。トップ（`/`）、Getting Started（`/getting-started`）、Foundations（`/foundations`）、Components（`/components`）を想定しています。
 
 ## 配布方針
 
@@ -113,11 +113,14 @@ npm run dev
 
 - **Cursor:** `.cursor/skills/` を正本とします。
 - **Claude Desktop:** `.cursor/skills/` の内容を `.claude/skills/` にシンボリックリンクまたはコピーで対応します。
-- 主な Skill:
-  - `skill-authoring-governance`: Skill作成時にREADME（人向け）とSkills（AI向け）の責務を分離するための基準。
+- Skill一覧:
   - `boundary-rules`: 再利用資産とA専用docs資産の配置境界・同期境界を判断するルール。
+  - `a-repo-only-components`: Aリポ専用コンポーネントの追加ルール（Bリポ同期対象を流用しない）。
   - `mdx-docs-authoring`: AリポのMDXページ作成と `prose` / `mdx-components` の使い分けルール。
+  - `storybook-mdx-generation`: コンポーネントからStorybook用 CSF/MDX を生成するルール。
+  - `storybook-docs-sync`: コンポーネント変更に追従してStorybookの stories/MDX を同期更新するルール。
   - `release-sync-playbook`: Aリポ更新をBリポ同期へ受け渡す際の確認手順とチェックリスト。
+  - `skill-authoring-governance`: Skill作成時にREADME（人向け）とSkills（AI向け）の責務を分離するための基準。
 
 ## MCP（Model Context Protocol）
 
