@@ -1,0 +1,20 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as HeadingStories from "./heading.stories";
+
+<Meta of={HeadingStories} />
+
+# Heading
+
+ページやセクションの階層に合わせてサイズを切り替えられる見出しコンポーネントです。
+
+## Examples
+
+### H1
+<Canvas of={HeadingStories.H1} />
+<Controls of={HeadingStories.H1} />
+
+### H2
+<Canvas of={HeadingStories.H2} />
+
+### PageTitle
+<Canvas of={HeadingStories.PageTitle} />

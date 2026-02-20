@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as TextLinkStories from "./text-link.stories";
+
+<Meta of={TextLinkStories} />
+
+# TextLink
+
+テキスト主体のリンクコンポーネントです。必要に応じて下線やアイコンを付与できます。
+
+## Examples
+
+### Default
+<Canvas of={TextLinkStories.Default} />
+<Controls of={TextLinkStories.Default} />
+
+### UnderlineWithIcon
+<Canvas of={TextLinkStories.UnderlineWithIcon} />

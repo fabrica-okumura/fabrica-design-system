@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as GapStories from "./gap.stories";
+
+<Meta of={GapStories} />
+
+# Gap
+
+要素間の余白を縦横のレイアウトに応じて制御するコンポーネントです。`row` と `wrap` の組み合わせで並び方を調整できます。
+
+## Examples
+
+### Column
+<Canvas of={GapStories.Column} />
+<Controls of={GapStories.Column} />
+
+### RowWrap
+<Canvas of={GapStories.RowWrap} />

@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as SelectStories from "./select.stories";
+
+<Meta of={SelectStories} />
+
+# Select
+
+候補リストから1つを選択するドロップダウンコンポーネントです。
+
+## Examples
+
+### Default
+<Canvas of={SelectStories.Default} />
+<Controls of={SelectStories.Default} />
+
+### WithSeparator
+<Canvas of={SelectStories.WithSeparator} />

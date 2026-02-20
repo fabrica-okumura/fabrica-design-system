@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as TextareaStories from "./textarea.stories";
+
+<Meta of={TextareaStories} />
+
+# Textarea
+
+複数行テキスト入力に使うコンポーネントです。フォームの自由記述欄などに利用します。
+
+## Examples
+
+### Default
+<Canvas of={TextareaStories.Default} />
+<Controls of={TextareaStories.Default} />
+
+### WithValue
+<Canvas of={TextareaStories.WithValue} />

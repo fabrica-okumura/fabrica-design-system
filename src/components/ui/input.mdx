@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as InputStories from "./input.stories";
+
+<Meta of={InputStories} />
+
+# Input
+
+1行テキスト入力のためのコンポーネントです。`type` の切り替えで入力用途を変更できます。
+
+## Examples
+
+### Default
+<Canvas of={InputStories.Default} />
+<Controls of={InputStories.Default} />
+
+### Disabled
+<Canvas of={InputStories.Disabled} />

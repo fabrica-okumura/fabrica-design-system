@@ -1,0 +1,14 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as PageHeaderStories from "./page-header.stories";
+
+<Meta of={PageHeaderStories} />
+
+# PageHeader
+
+ページ上部に固定表示されるヘッダーです。現在はロゴリンクのみを表示します。
+
+## Examples
+
+### Default
+<Canvas of={PageHeaderStories.Default} />
+<Controls of={PageHeaderStories.Default} />

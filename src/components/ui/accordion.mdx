@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as AccordionStories from "./accordion.stories";
+
+<Meta of={AccordionStories} />
+
+# Accordion
+
+折りたたみ可能なコンテンツを段階的に表示するコンポーネントです。`type` を `single` にすると同時に1つだけ、`multiple` にすると複数項目を展開できます。
+
+## Examples
+
+### Single
+<Canvas of={AccordionStories.Single} />
+<Controls of={AccordionStories.Single} />
+
+### Multiple
+<Canvas of={AccordionStories.Multiple} />

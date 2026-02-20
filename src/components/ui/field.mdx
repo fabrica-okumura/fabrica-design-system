@@ -1,0 +1,16 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as FieldStories from "./field.stories";
+
+<Meta of={FieldStories} />
+
+# Field
+
+ラベル・説明文・エラー表示を含むフォーム項目を構成するためのコンポーネント群です。
+
+## Examples
+
+### InputField
+<Canvas of={FieldStories.InputField} />
+
+### CheckboxFieldSet
+<Canvas of={FieldStories.CheckboxFieldSet} />

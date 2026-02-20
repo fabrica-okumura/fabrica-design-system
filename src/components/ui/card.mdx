@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as CardStories from "./card.stories";
+
+<Meta of={CardStories} />
+
+# Card
+
+関連する情報をひとまとまりで表示するためのコンテナコンポーネントです。
+
+## Examples
+
+### Default
+<Canvas of={CardStories.Default} />
+<Controls of={CardStories.Default} />
+
+### WithAction
+<Canvas of={CardStories.WithAction} />

@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as IconStories from "./icon.stories";
+
+<Meta of={IconStories} />
+
+# Icon
+
+SVGアイコンを名前で指定して表示するコンポーネントです。`size` で表示サイズを調整できます。
+
+## Examples
+
+### Default
+<Canvas of={IconStories.Default} />
+<Controls of={IconStories.Default} />
+
+### WithAlt
+<Canvas of={IconStories.WithAlt} />

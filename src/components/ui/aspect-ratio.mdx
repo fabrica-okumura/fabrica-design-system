@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as AspectRatioStories from "./aspect-ratio.stories";
+
+<Meta of={AspectRatioStories} />
+
+# AspectRatio
+
+任意の比率でコンテンツ表示領域を確保するコンポーネントです。画像や動画のラッパーとして利用できます。
+
+## Examples
+
+### Default
+<Canvas of={AspectRatioStories.Default} />
+<Controls of={AspectRatioStories.Default} />
+
+### Square
+<Canvas of={AspectRatioStories.Square} />

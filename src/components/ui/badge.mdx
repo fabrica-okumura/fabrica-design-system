@@ -1,0 +1,23 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as BadgeStories from "./badge.stories";
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+短いステータスや分類ラベルを表示するための小さなコンポーネントです。
+
+## Examples
+
+### Default
+<Canvas of={BadgeStories.Default} />
+<Controls of={BadgeStories.Default} />
+
+### Secondary
+<Canvas of={BadgeStories.Secondary} />
+
+### Destructive
+<Canvas of={BadgeStories.Destructive} />
+
+### Outline
+<Canvas of={BadgeStories.Outline} />

@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as BreadcrumbStories from "./breadcrumb.stories";
+
+<Meta of={BreadcrumbStories} />
+
+# Breadcrumb
+
+現在地までの階層を表示するナビゲーションコンポーネントです。
+
+## Examples
+
+### Default
+<Canvas of={BreadcrumbStories.Default} />
+<Controls of={BreadcrumbStories.Default} />
+
+### WithEllipsis
+<Canvas of={BreadcrumbStories.WithEllipsis} />

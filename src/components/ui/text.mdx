@@ -1,0 +1,20 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as TextStories from "./text.stories";
+
+<Meta of={TextStories} />
+
+# Text
+
+本文用のテキストコンポーネントです。`size` と `lineHeight` の組み合わせで可読性を調整できます。
+
+## Examples
+
+### Base
+<Canvas of={TextStories.Base} />
+<Controls of={TextStories.Base} />
+
+### Large
+<Canvas of={TextStories.Large} />
+
+### Small
+<Canvas of={TextStories.Small} />

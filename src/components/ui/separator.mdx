@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as SeparatorStories from "./separator.stories";
+
+<Meta of={SeparatorStories} />
+
+# Separator
+
+コンテンツの区切り線を表示するコンポーネントです。横線・縦線の両方に対応しています。
+
+## Examples
+
+### Horizontal
+<Canvas of={SeparatorStories.Horizontal} />
+<Controls of={SeparatorStories.Horizontal} />
+
+### Vertical
+<Canvas of={SeparatorStories.Vertical} />

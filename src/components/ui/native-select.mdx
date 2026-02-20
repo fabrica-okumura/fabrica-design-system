@@ -1,0 +1,17 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as NativeSelectStories from "./native-select.stories";
+
+<Meta of={NativeSelectStories} />
+
+# NativeSelect
+
+ブラウザ標準の `<select>` をベースにしたセレクトコンポーネントです。
+
+## Examples
+
+### Default
+<Canvas of={NativeSelectStories.Default} />
+<Controls of={NativeSelectStories.Default} />
+
+### WithOptGroup
+<Canvas of={NativeSelectStories.WithOptGroup} />
