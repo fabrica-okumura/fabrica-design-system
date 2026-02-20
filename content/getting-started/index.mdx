@@ -1,123 +1,116 @@
 # Getting Started
 
-## 導入手順
+このページは **Aリポ（`fabrica-design-system`）と Bリポ（`fabrica-product-starter`）を同時に使う前提** の最短導入手順です。  
+詳細な運用ルール（アイコン運用、フロントエンドガイドライン、責務分離など）は **Aリポの** `fabrica-design-system/README.md` を正本として参照してください。
 
-### 1. 同期
+## 用語
 
-スターター（`fabrica-product-starter`）で Aリポ→Bリポ同期を実行します。
+- **Aリポ**: `fabrica-design-system`（デザインシステム本体 + デザインシステムWebサイト）
+- **Bリポ**: `fabrica-product-starter`（利用側スターター）
 
-```bash
-npm run sync:ds
+## 前提: A/Bを同階層に配置する
+
+まず、AリポとBリポを同じ親ディレクトリ配下に配置します。
+
+```text
+your-workspace/
+├── fabrica-design-system   # Aリポ
+└── fabrica-product-starter # Bリポ
 ```
 
-### 2. CSS読み込み
-
-スターターの `src/app/globals.css` でローカルCSSを読み込みます。
-
-```css
-@import "../styles/globals.css";
-```
-
-### 3. 利用例
-
-```tsx
-import { Button } from "@/components/ui/button";
-
-export default function Example() {
-  return <Button>保存</Button>;
-}
-```
-
-## 依存関係
-
-依存関係はスターター側で管理します。
+この配置を前提に、Bリポの同期コマンドは `../fabrica-design-system` を参照します。
 
 ## 必要バージョン
 
-- Node.js v22 以上（`style-dictionary` の要件に合わせる）
-- npm（pnpm / Yarn は使用しません）
+- Node.js v22 以上
+- npm（pnpm / Yarn は使いません）
 
-## 初期セットアップ
+## クイックスタート（開発者 / Bリポ利用者向け）
 
-1. 依存関係をインストール: `npm install`
-2. 開発サーバーを起動: `npm run dev`
-3. SVG アイコンの変更がある場合は `npm run watch:icons` を別ターミナルで起動
+通常の開発者は **Bリポから開始** します。
 
-## よく使うスクリプト
-
-- `npm run dev`: Next.js 開発サーバーを起動
-- `npm run build`: 本番ビルドを作成
-- `npm run lint`: Lint チェック
-- `npm run storybook`: Storybook を起動（ポート 6006）
-- `npm run watch:icons`: `public/icons/*.svg` の変更を監視して `icon-definitions.ts` を再生成
-- `npm run generate:icons`: アイコン定義の手動再生成
-
-## MCPサーバー（ローカル）
-
-MCPサーバーは `mcp-server/` にあり、標準入出力（stdio）で起動します。
+### 1) Bリポで A→B 同期
 
 ```bash
-cd mcp-server
+cd fabrica-product-starter
+npm run sync:ds
+```
+
+この同期では、Aリポの再利用コードをBリポへ反映します。依存関係やAリポ専用の内容は同期されません。
+
+依存関係（`package.json`）は **AリポとBリポで別管理** します。Aリポはデザインシステム本体/ドキュメント運用、Bリポはプロダクト実行環境という役割の違いがあるため、必要なパッケージ（`dependencies` / `devDependencies`）とバージョン方針は一致しません。  
+そのため、Aリポで追加した依存関係は `sync:ds` でBリポへ自動反映されないので、必要に応じて `npm run check:deps` で差分確認して追加インストールします。
+
+### 2) Bリポで依存関係をインストール
+
+```bash
+npm install
+```
+
+### 3) 開発サーバー起動
+
+```bash
+npm run dev
+```
+
+## Aリポ担当者向け（デザインシステム更新時）
+
+Aリポを更新するのは、原則デザインシステム担当です。
+
+```bash
+cd fabrica-design-system
+npm install
+npm run dev
+```
+
+必要に応じて Storybook を使って検証します。
+
+```bash
+npm run storybook
+```
+
+## MCP（任意）
+
+MCPは必須ではありません。  
+ただし、AIに仕様確認や実装相談をする場合は、Aリポのコンテキスト参照精度を上げられます。
+
+### 使う場合の起動手順
+
+#### Aリポを開いて使う場合
+
+初回、または `mcp-server/` を更新したときだけビルドします。
+
+```bash
+cd fabrica-design-system/mcp-server
 npm install
 npm run build
+```
+
+ビルド後に`.cursor/mcp.json` の設定にしたがって MCP を利用できます。
+
+#### Bリポを開いて使う場合
+
+Bリポ側の `.cursor/mcp.json` と `package.json` に Aリポ参照設定がある前提です。  
+次を確認してください。
+
+- AリポとBリポが同階層にある（`../fabrica-design-system` が有効）
+- Aリポの `mcp-server` がビルド済み（上記コマンド）
+
+BリポからMCPを使い始める場合は、Bリポのルートで次を実行します。
+
+```bash
+cd fabrica-product-starter
 npm run mcp
 ```
 
-## デプロイ（Vercel）
+### 利用例
 
-docs は `https://fabrica-design-system.vercel.app/` にデプロイ済みです。  
-GitHub に push すると自動デプロイされます。
+- 仕様確認: 「Button の variant と size の一覧を教えて」
+- 実装相談: 「この画面に Switch を追加する実装例を出して」
+- トークン確認: 「`--color-primary` の値と利用箇所を教えて」
 
-## アイコン運用
+## 詳細ルールの参照先
 
-- 新しい SVG アイコンは `public/icons/` に配置
-- 開発中は `npm run watch:icons` を常駐
-- PR 作成前に `icon-definitions.ts` に差分がないか確認
-
-## CSS / デザイントークン運用
-
-### フォント設定
-
-デフォルトフォントは **Noto Sans JP**。`next/font/google` を使用し、
-`src/app/globals.css` でフォールバックフォントを設定しています。
-
-### デザイントークン運用
-
-- Figma からエクスポートしたトークンを `tokens/` に配置
-- `node scripts/remove-japanese-tokens.mjs` を実行
-- `npx style-dictionary build` を実行（出力先: `src/styles/variables.css`）
-- `node scripts/postprocess-design-tokens.mjs` を実行し、rem 値とプレフィックスを調整
-
-## フロントエンドガイドライン（抜粋）
-
-### TypeScript
-
-- `any` は避ける
-- Client Component では先頭に `'use client'`
-- React 19 の非推奨 API は使わない
-
-### CSS
-
-- Tailwind ユーティリティを基本とする
-- `globals.css` / `variables.css` のトークンを使う
-- `bg-[--token]` 形式（canonical class）を使用
-
-### コンポーネント
-
-- `src/components/ui` は低レベル UI
-- `src/components/layout` はページ構造・レイアウト用コンポーネント
-- `asChild` でタグ差し替えを許可
-
-### アイコン
-
-- `lucide-react` ではなく `Icon` を使う
-- `public/icons` と `icon-definitions.ts` を同期する
-
-### 画像・リンク
-
-- 画像は `next/image`
-- リンクは `next/link`
-
-### 命名規則
-
-- ファイル/ディレクトリは kebab-case
+- Aリポ運用ルール: `fabrica-design-system/README.md`
+- Bリポ運用ルール（利用側編集範囲・同期運用）: `fabrica-product-starter/README.md`
+- A/B責務と同期境界: `fabrica-design-system/README.md` の「ディレクトリ責務」「配布方針」「ルールの責務分離」

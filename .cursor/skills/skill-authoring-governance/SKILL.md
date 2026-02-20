@@ -6,12 +6,13 @@ description: 人向けREADME方針とAI向け実行ルールを混在させず�
 # Skill作成ガバナンス
 
 ## 目的
-運用ルールの責務を分離し、READMEとSkillsの重複・矛盾を防ぐ。
+運用ルールの責務を分離し、README・AGENTS・Skills の重複と矛盾を防ぐ。
 
 ## 必須の分離ルール
 1. チーム方針は `README.md` に書く（背景・責務・境界）。
-2. AIの実行手順は `.cursor/skills/**/SKILL.md` に書く（判断・手順・確認）。
-3. 同じルール全文を両方に重複記載しない。
+2. AI共通ルールは `AGENTS.md` に書く（全タスク共通の前提）。
+3. AIの実行手順は `.cursor/skills/**/SKILL.md` に書く（判断・手順・確認）。
+4. 同じルール全文を README/AGENTS/Skills に重複記載しない。
 
 ## 命名ルール
 - 名前は小文字の kebab-case にする。

@@ -105,14 +105,16 @@ npm run dev
 
 ## ルールの責務分離（人向け / AI向け）
 
-- **人が守ること（README）:** 目的、責務、同期対象、作業フローなどの運用ルールは README に記載します。
-- **AIが守ること（Skills）:** 編集判断、手順、禁止事項、確認手順は `.cursor/skills/**/SKILL.md` に記載します。
-- 同じ内容を二重管理しないため、README は「方針」、Skills は「実行ルール」に限定します。
+- **README（人向け）:** 目的、責務、境界、運用モデルなどの方針を記載します。
+- **AGENTS.md（AI共通）:** リポジトリ全体で常に守る共通ルールを記載します。
+- **Skills（AI実行）:** 編集判断、手順、禁止事項、確認手順を `.cursor/skills/**/SKILL.md` に記載します。
+- 同じ内容を二重管理しないため、README は「方針」、AGENTS は「共通ルール」、Skills は「具体手順」に限定します。
 
 ## Agent Skills（AI向け運用ルール）
 
+- **共通ルール:** まず `AGENTS.md` を優先し、各ワークフローは Skill を参照します。
 - **Cursor:** `.cursor/skills/` を正本とします。
-- **Claude Desktop:** `.cursor/skills/` の内容を `.claude/skills/` にシンボリックリンクまたはコピーで対応します。
+- **Claude Desktop:** 必要な場合`.cursor/skills/` の内容を `.claude/skills/` にシンボリックリンクまたはコピーで対応します。
 - Skill一覧:
   - `boundary-rules`: 再利用資産とA専用docs資産の配置境界・同期境界を判断するルール。
   - `a-repo-only-components`: Aリポ専用コンポーネントの追加ルール（Bリポ同期対象を流用しない）。

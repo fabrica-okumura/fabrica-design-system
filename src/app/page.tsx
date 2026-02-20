@@ -1,7 +1,7 @@
 import Link from "next/link";
 
+import { SectionContainer } from "@/components/layout/section-container";
 import { Heading } from "@/components/ui/heading";
-import { SectionContainer } from "@/components/ui/section-container";
 import { Text } from "@/components/ui/text";
 
 type GuideItem = {
@@ -13,7 +13,7 @@ type GuideItem = {
 
 const guideItems: GuideItem[] = [
   {
-    title: "Design Principles",
+    title: "Design Principles（未作成）",
     description:
       "デザイン上で目指すべき指針を言語化し、誰でも迷わずにFabricaらしい表現ができる状態をつくります。",
     href: "/principles",
@@ -22,21 +22,21 @@ const guideItems: GuideItem[] = [
   {
     title: "Getting Started",
     description:
-      "導入手順、利用フロー、最初に押さえるべき考え方をまとめています。",
+      "導入手順、A/Bリポジトリの役割、利用開始までの流れをまとめています。",
     href: "/getting-started",
     cta: "Read Guide",
   },
   {
-    title: "Foundations",
+    title: "Foundations（未作成）",
     description:
-      "タイポグラフィ、カラー、スペーシングなど、デザインの最小単位を定義した土台です。",
+      "タイポグラフィ、カラー、スペーシングなど、デザインの最小単位を定義しています。",
     href: "/foundations",
     cta: "Explore",
   },
   {
     title: "Components",
     description:
-      "組み合わせによる迅速なプロダクト構築を支えるコンポーネント群です。実装例と利用方法を確認できます。",
+      "コンポーネントのコードサンプルと使い方を紹介します。",
     href: "/components",
     cta: "Explore",
   },

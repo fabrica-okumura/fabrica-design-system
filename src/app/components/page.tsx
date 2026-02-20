@@ -6,6 +6,7 @@ import { ComponentCatalogCard } from "@/components/docs-site/component-catalog-c
 import { Gap } from "@/components/layout/gap";
 import { PageHeader } from "@/components/layout/page-header";
 import { PageTopButton } from "@/components/layout/page-top-button";
+import { SectionContainer } from "@/components/layout/section-container";
 import {
   Accordion,
   AccordionContent,
@@ -71,7 +72,6 @@ import {
 } from "@/components/ui/pagination";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { SectionContainer } from "@/components/ui/section-container";
 import {
   Select,
   SelectContent,
@@ -221,7 +221,7 @@ export default function ComponentsPage() {
       name: "SectionContainer",
       description: "セクション単位で内容を囲むコンポーネントです。",
       storybookHref:
-        "http://localhost:6006/?path=/docs/ui-sectioncontainer--docs",
+        "http://localhost:6006/?path=/docs/layout-sectioncontainer--docs",
     },
     {
       name: "Select",

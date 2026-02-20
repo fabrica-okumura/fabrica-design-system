@@ -5,7 +5,7 @@ import { SectionContainer } from "./section-container"
 type SectionContainerProps = React.ComponentProps<typeof SectionContainer>
 
 const meta = {
-  title: "UI/SectionContainer",
+  title: "Layout/SectionContainer",
   component: SectionContainer,
   parameters: {
     layout: "centered",
@@ -25,3 +25,4 @@ export const Default: Story = {
     </SectionContainer>
   ),
 }
+
